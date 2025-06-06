@@ -9,17 +9,18 @@ function App() {
   const [multiplier3, setMultiplier3] = useState<number>(0);
   const [multiplier4, setMultiplier4] = useState<number>(0);
   const [multiplier5, setMultiplier5] = useState<number>(0);
-  const [passiveIncome, setPassiveIncome] = useState<number>(0);
-  const [passiveIncome2, setPassiveIncome2] = useState<number>(0);
-  const [passiveIncome3, setPassiveIncome3] = useState<number>(0);
-  const [passiveIncome4, setPassiveIncome4] = useState<number>(0);
-  const [passiveIncome5, setPassiveIncome5] = useState<number>(0);
-
   const [multiplierPrice1, setMultiplierPrice1] = useState<number>(10);
   const [multiplierPrice2, setMultiplierPrice2] = useState<number>(20);
   const [multiplierPrice3, setMultiplierPrice3] = useState<number>(30);
   const [multiplierPrice4, setMultiplierPrice4] = useState<number>(40);
   const [multiplierPrice5, setMultiplierPrice5] = useState<number>(50);
+
+
+  const [passiveIncome, setPassiveIncome] = useState<number>(0);
+  const [passiveIncome2, setPassiveIncome2] = useState<number>(0);
+  const [passiveIncome3, setPassiveIncome3] = useState<number>(0);
+  const [passiveIncome4, setPassiveIncome4] = useState<number>(0);
+  const [passiveIncome5, setPassiveIncome5] = useState<number>(0);
   const [passiveIncomePrice, setPassiveIncomePrice] = useState<number>(10);
   const [passiveIncomePrice2, setPassiveIncomePrice2] = useState<number>(20);
   const [passiveIncomePrice3, setPassiveIncomePrice3] = useState<number>(30);
@@ -43,11 +44,14 @@ function App() {
 
 
   const [ascend, setAscend] = useState<number>(1);
+  const [ascend2, setAscend2] = useState<number>(1);
   const [ascendPrice, setAscendPrice] = useState<number>(1000000);
+  const [ascendPrice2, setAscendPrice2] = useState<number>(0);
 
-  const multiplier = ((((multiplier1 + multiplier2 + multiplier3 + multiplier4 + multiplier5) * clickUpgrade) * clickUpgrade2) * clickUpgrade3) * ascend;    
+  const multiplier = (((((multiplier1 + multiplier2 + multiplier3 + multiplier4 + multiplier5) * clickUpgrade) * clickUpgrade2) * clickUpgrade3) * ascend) * ascend2;     
   
-  const income = ((((passiveIncome + passiveIncome2 + passiveIncome3 + passiveIncome4 + passiveIncome5) * incomeUpgrade) * incomeUpgrade2) * incomeUpgrade3) * ascend;
+  const income = (((((passiveIncome + passiveIncome2 + passiveIncome3 + passiveIncome4 + passiveIncome5) * incomeUpgrade) * incomeUpgrade2) * incomeUpgrade3) * ascend) * ascend2;
+
 
   useEffect(() => {
     const savedCount = localStorage.getItem('clickCount');
@@ -90,12 +94,12 @@ function App() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCount(prev => +(prev + income).toFixed(2));
-      }, 100);
+      }, 1000);
     return () => clearInterval(interval);
   }, [income]);
 
- const clicks1 = 1.5;
- const price1 = 1.6;
+ const clicks1 = 2;
+ const price1 = 1.4;
   const handleBuyMultiplier1 = () => {
     if (count >= multiplierPrice1) {
       setCount(prev => +(prev - multiplierPrice1).toFixed(2));
@@ -103,8 +107,8 @@ function App() {
       setMultiplierPrice1(prev => +(prev * price1).toFixed(2));
     }
   };
-const clicks2 = 2;
-const price2 = 2.3;
+const clicks2 = 4;
+const price2 = 2;
   const handleBuyMultiplier2 = () => {
     if (count >= multiplierPrice2) {
       setCount(prev => +(prev - multiplierPrice2).toFixed(2));
@@ -112,8 +116,8 @@ const price2 = 2.3;
       setMultiplierPrice2(prev => +(prev * price2).toFixed(2));
     }
   };
-  const clicks3 = 2.5;
-  const price3 = 2.8;
+  const clicks3 = 6;
+  const price3 = 2.4;
   const handleBuyMultiplier3 = () => {
     if (count >= multiplierPrice3) {
       setCount(prev => +(prev - multiplierPrice3).toFixed(2));
@@ -121,8 +125,8 @@ const price2 = 2.3;
       setMultiplierPrice3(prev => +(prev * price3).toFixed(2));
     }
   };
-  const price4 = 3.5;
-  const clicks4 = 3;
+  const price4 = 3;
+  const clicks4 = 8;
     const handleBuyMultiplier4 = () => {
     if (count >= multiplierPrice4) {
       setCount(prev => +(prev - multiplierPrice4).toFixed(2));
@@ -131,8 +135,8 @@ const price2 = 2.3;
     }
   };
 
-  const price5 = 6.5;
-  const clicks5 = 5;
+  const price5 = 5;
+  const clicks5 = 10;
     const handleBuyMultiplier5 = () => {
     if (count >= multiplierPrice5) {
       setCount(prev => +(prev - multiplierPrice5).toFixed(2));
@@ -141,7 +145,7 @@ const price2 = 2.3;
     }
   };
 
-  const income1 = 1;
+  const income1 = 5;
   const handlePassiveIncome = () =>  {
     if (count >= passiveIncomePrice) {
       setCount(prev => +(prev - passiveIncomePrice).toFixed(2));
@@ -149,7 +153,7 @@ const price2 = 2.3;
       setPassiveIncomePrice(prev => +(prev * price1).toFixed(2));
     }
   };
-  const income2 = 1.5;
+  const income2 = 10;
   const handlePassiveIncome2 = () => {
     if (count >= passiveIncomePrice2) {
       setCount(prev => +(prev - passiveIncomePrice2).toFixed(2));
@@ -157,7 +161,7 @@ const price2 = 2.3;
       setPassiveIncomePrice2(prev => +(prev * price2).toFixed(2));
     }
   };
-  const income3 = 2;
+  const income3 = 15;
   const handlePassiveIncome3 = () => {
     if (count >= passiveIncomePrice3) {
       setCount(prev => +(prev - passiveIncomePrice3).toFixed(2));
@@ -165,7 +169,7 @@ const price2 = 2.3;
       setPassiveIncomePrice3(prev => +(prev * price3).toFixed(2));
     }
   };
-  const income4 = 3;
+  const income4 = 20;
   const handlePassiveIncome4 = () => {
     if (count >= passiveIncomePrice4) {
       setCount(prev => +(prev - passiveIncomePrice4).toFixed(2));
@@ -173,7 +177,7 @@ const price2 = 2.3;
       setPassiveIncomePrice4(prev => +(prev * price4).toFixed(2));
     }
   };
-  const income5 = 4.5;
+  const income5 = 25;
   const handlePassiveIncome5 = () => {
     if (count >= passiveIncomePrice5) {
       setCount(prev => +(prev - passiveIncomePrice5).toFixed(2));
@@ -197,7 +201,7 @@ const price2 = 2.3;
       setIncomeUpgradePrice(prev => +(prev * upgradecost).toFixed(2));
     }
   };
-  const upgrades2 = 6;
+  const upgrades2 = 5;
   const upgradecost2 = 250;
       const handleUpgradeClicks2 = () => {
     if (count >= clickUpgrade2) {
@@ -205,7 +209,7 @@ const price2 = 2.3;
       setClickUpgrade2(prev => +(prev * upgrades2).toFixed(2));
       setClickUpgradePrice2(prev => +(prev * upgradecost2).toFixed(2));
     }
-  };
+  };.34
       const handleUpgradeIncome2 = () => {
     if (count >= incomeUpgrade2) {
       setCount(prev => +(prev - incomeUpgradePrice2).toFixed(2));
@@ -213,8 +217,8 @@ const price2 = 2.3;
       setIncomeUpgradePrice2(prev => +(prev * upgradecost2).toFixed(2));
     }
   };
-  const upgrades3 = 35;
-  const upgradecost3 = 15000;
+  const upgrades3 = 30;
+  const upgradecost3 = 7500;
        const handleUpgradeClicks3 = () => {
     if (count >= clickUpgrade3) {
       setCount(prev => +(prev - clickUpgradePrice3).toFixed(2));
@@ -229,11 +233,11 @@ const price2 = 2.3;
       setIncomeUpgradePrice3(prev => +(prev * upgradecost3).toFixed(2));
     }
   };
-  const ascention = 1;
-  const ascentionprice = 1000;
+  const ascention = 2;
+  const ascentionprice = 8000;
   const handleAscend = () => {
     if (count >= ascendPrice) {
-      setAscend(prev => +(prev + ascention).toFixed(2));
+      setAscend(prev => +(prev * ascention).toFixed(2));
       setCount(0);
       setMultiplier1(1);
       setMultiplier2(0);
@@ -271,12 +275,60 @@ const price2 = 2.3;
     }
   };
 
+  const ascentionprice2 = 100;
+  const ascention2 = 1;
+  const handleAscend2 = () => {
+    if (count >= ascendPrice2) {
+      setAscend2(prev => +(prev + ascention2).toFixed(2));
+      setCount(0);
+      setMultiplier1(1);
+      setMultiplier2(0);
+      setMultiplier3(0);
+      setMultiplier4(0);
+      setMultiplier5(0);
+      setPassiveIncome(0);
+      setPassiveIncome2(0);
+      setPassiveIncome3(0);
+      setPassiveIncome4(0);
+      setPassiveIncome5(0);
+      setMultiplierPrice1(10);
+      setMultiplierPrice2(20);
+      setMultiplierPrice3(30);
+      setMultiplierPrice4(40);.34
+      setMultiplierPrice5(50);
+      setPassiveIncomePrice(10);
+      setPassiveIncomePrice2(20);
+      setPassiveIncomePrice3(30);
+      setPassiveIncomePrice4(40);
+      setPassiveIncomePrice5(50);
+      setIncomeUpgrade(1);
+      setIncomeUpgradePrice(1000);
+      setClickUpgrade(1);
+      setClickUpgradePrice(1000);
+      setIncomeUpgrade2(1);
+      setIncomeUpgradePrice2(100000);
+      setClickUpgrade2(1);
+      setClickUpgradePrice2(100000);
+      setIncomeUpgrade3(1);
+      setIncomeUpgradePrice3(10000000);
+      setClickUpgrade3(1);
+      setClickUpgradePrice3(10000000);
+      setAscend(1);
+      setAscendPrice(1000000);
+      setAscendPrice2(prev => +(prev * ascentionprice2).toFixed(2));
+    }
+  };
+  const multi = 1024;
   return (
     <>
     <div className="ascends">
       <h2>Ascends</h2>
       <button className="ascend" onClick={handleAscend} disabled={count < ascendPrice}>
-        Ascend {ascention} (Price: {ascendPrice.toFixed(2)})
+        Ascend (Price: {ascendPrice.toFixed(2)})
+        </button>
+      <h2>Required Ascension level {multi * (ascend2)}</h2>
+        <button className="ascend" onClick={handleAscend2} disabled={ascend < (multi * (ascend2))}>
+        Ascend (Price: {ascendPrice2.toFixed(2)})
         </button>
     </div>
     <div className="Main">
@@ -285,8 +337,9 @@ const price2 = 2.3;
       <p> 
         Current clicks: {multiplier.toFixed(2)}x
       </p>
-      <p>Current passive income:{income .toFixed(2)} /s</p>
+      <p>Current passive income: {(income).toFixed(2)} /s</p>
       <p>Ascension level: {ascend}</p>
+      {/* <p id="time-spent">time wasted: 0s</p> */}
       <button className="click-button" onClick={handleClick}><div>Click me!</div></button>
       <div className="buy__menu">
         <div className="clicking">
