@@ -52,52 +52,6 @@ function App() {
   
   const income = (((((passiveIncome + passiveIncome2 + passiveIncome3 + passiveIncome4 + passiveIncome5) * incomeUpgrade) * incomeUpgrade2) * incomeUpgrade3) * ascend) * ascend2;
 
-
-  useEffect(() => {
-    const savedCount = localStorage.getItem('clickCount');
-    if (savedCount !== null) {
-      setCount(parseFloat(savedCount));
-    }
-    const savedMultiplier1 = localStorage.getItem('multiplier1');
-    if (savedMultiplier1 !== null) {
-      setMultiplier1(parseFloat(savedMultiplier1));
-    }
-    const savedMultiplier2 = localStorage.getItem('multiplier2');
-    if (savedMultiplier2 !== null) {
-      setMultiplier2(parseFloat(savedMultiplier2));
-    }
-    const savedPrice1 = localStorage.getItem('multiplierPrice1');
-    if (savedPrice1 !== null) {
-      setMultiplierPrice1(parseFloat(savedPrice1));
-    }
-    const savedPrice2 = localStorage.getItem('multiplierPrice2');
-    if (savedPrice2 !== null) {
-      setMultiplierPrice2(parseFloat(savedPrice2));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('clickCount', count.toString());
-  }, [count]);
-
-  useEffect(() => {
-    localStorage.setItem('multiplier1', multiplier1.toString());
-    localStorage.setItem('multiplier2', multiplier2.toString());
-    localStorage.setItem('multiplierPrice1', multiplierPrice1.toString());
-    localStorage.setItem('multiplierPrice2', multiplierPrice2.toString());
-  }, [multiplier1, multiplier2, multiplierPrice1, multiplierPrice2]);
-
-  const handleClick = () => {
-    setCount(prev => +(prev + multiplier).toFixed(2));
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCount(prev => +(prev + income).toFixed(2));
-      }, 1000);
-    return () => clearInterval(interval);
-  }, [income]);
-
  const clicks1 = 2;
  const price1 = 1.4;
   const handleBuyMultiplier1 = () => {
